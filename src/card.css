@@ -1,5 +1,39 @@
+
+.card-grid {
+    display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 20px;
+}
 .card-wrapper {
     width: 200px;
-    height: 50px;
+    height: 200px;
     border: 1px solid black;
+	position: relative;
+	border-radius: 5px;
+	padding: 10px;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+	text-align: center; 
+    overflow-y: scroll;
+    display:flex;
+    flex-direction: column;
+
+
+}
+.card-wrapper:hover {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+.card-name {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    padding: 5px;
+    font-size: 1.2em;
+}
+
+.card-image {
+    position: relative;
+    flex-grow: 1;
 }
