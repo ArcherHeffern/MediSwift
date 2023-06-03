@@ -4,26 +4,22 @@ interface Props {
     name: string;
     quantity: number;
     price: number;
-    img: string;
 }
 
 function Card(props: Props) {
-    const { name, quantity, price, img } = props;
+    const { name, quantity, price} = props;
+    const url = `./images/${name.toLowerCase()}.jpg`;
     return (
-        <div className="card-grid">
             <div className="card-wrapper">
                 <h3 className="card-name">{name || "drug"}</h3>
                 <div className="card-image">
-                    <img src={img} alt={name} />
+                    <img src={url} alt={name.toLowerCase()} />
                 </div>
                 <div className="card-detail" >
                     <p>Quantity: {quantity}</p>
                     <p>Price: {price}</p>
                 </div>
             </div>
-        </div>
-
-
     );
 
 }

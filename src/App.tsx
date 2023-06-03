@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import Card from './card.tsx'
 import data from './tempDB.ts';
