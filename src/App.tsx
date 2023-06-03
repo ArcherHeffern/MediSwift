@@ -5,7 +5,9 @@ function App() {
 
   return (
     <>
-    hello world
+    <header>
+      <h1>Logo</h1>
+    </header>
     </>
   )
 }
