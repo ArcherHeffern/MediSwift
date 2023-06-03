@@ -1,10 +1,10 @@
-import "card.css";
+import "./card.css";
 
 function Card() {
 
     return (
         <>
-        <div>
+        <div className="card-wrapper">
             this is a card
         </div>
         </>
