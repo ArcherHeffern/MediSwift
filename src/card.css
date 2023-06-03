@@ -5,8 +5,9 @@
 	grid-gap: 20px;
 }
 .card-wrapper {
-    width: 200px;
+    width: 30vw;
     height: 200px;
+    margin-top: 10px;
     border: 1px solid black;
 	position: relative;
 	border-radius: 5px;
@@ -16,6 +17,7 @@
     overflow-y: scroll;
     display:flex;
     flex-direction: column;
+    margin-right: auto;
 
 
 }
@@ -31,6 +33,7 @@
     color: white;
     padding: 5px;
     font-size: 1.2em;
+
 }
 
 .card-image {
