@@ -1,5 +1,8 @@
 .card-wrapper {
-    width: 200px;
-    height: 50px;
+    width: 30vw;
+    height: 200px;
+    margin-top: 10px;
     border: 1px solid black;
+    margin-right: auto;
+    overflow-y: scroll;
 }
