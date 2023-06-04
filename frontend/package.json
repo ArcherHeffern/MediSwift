@@ -10,6 +10,7 @@
     "bb": "tsc && node dist/index.js"
   },
   "dependencies": {
+    "formik": "^2.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

@@ -24,10 +24,10 @@ function Modal({ product_name, data, isOpen, onClose, setQuantity }: Props) {
             <div className="modal-content" onClick={preventClose}>
                 <div className="image-container"></div>
                 <div className='info-section'>
-                    <h3>Name: {product.name}</h3>
-                    <p>Description: {product.description}</p>
-                    <p>Price: {product.price}</p>
-                    <p>Quantity: {product.quantity}</p>
+                    <h3>Name: {product?.name??"Advil"}</h3>
+                    <p>Description: {product?.description??"dgjdf"}</p>
+                    <p>Price: {product?.price??"574"}</p>
+                    <p>Quantity: {product?.quantity??"583"}</p>
                     <button onClick={() => setQuantity(product.name, product.quantity +1)}>Buy</button>
                 </div>
             </div>
