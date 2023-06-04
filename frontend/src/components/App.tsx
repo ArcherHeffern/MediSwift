@@ -1,4 +1,4 @@
-import { useState, useEffect, SetStateAction } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css'
 import Card from './card.tsx'
 import DBdata from '../tempDB.ts';
@@ -6,7 +6,8 @@ import Modal from './modal.tsx';
 import LoginModal from './loginModal.tsx';
 import { Product, User } from '../types.ts';
 import Axios from 'axios';
-import MediLogin from "../static/medilogin.svg"
+import MediLogin from "../assets/medilogin.svg"
+import logo from "../assets/logo.png"
 
 
 function App() {
@@ -93,7 +94,7 @@ function App() {
   return (
     <>
       <header>
-        <h1>Logo</h1>
+        <div className='logo-container'><img src={logo} alt='logo'/></div>
         {email && password ? <p>{email}</p> : <button onClick={openLoginModal} className='login-button'><img src={MediLogin} alt="Login"/></button>}
       </header>
       <div className='card-container'>
