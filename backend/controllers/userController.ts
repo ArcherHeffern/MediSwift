@@ -42,6 +42,21 @@ export const createUser = async (req: Request, res: Response) => {
 }
 
 export const loginUser = async (req: Request, res: Response) => {
-    res.send("login user").status(200);
+    const { email, password } = req.headers;
+    const user = await User.findOne({ email, password });
+    if (user) {
+        res.status(200).json({
+            status: 'success',
+            data: {
+                user
+            }
+        });
+    }
+    else {
+        res.status(400).json({
+            status: 'fail',
+            message: 'Invalid credentials'
+        });
+    }
 }
 

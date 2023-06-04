@@ -1,6 +1,6 @@
 import express from 'express';
 import { getAllUsers, createUser, loginUser } from './controllers/userController';
-import { getDrugs, createDrug, updateDrug, deleteDrug } from './controllers/drugController';
+import { getDrugs, createDrug, updateDrug, deleteDrug, deleteAllDrugs } from './controllers/drugController';
 import { checkout } from './controllers/checkoutController';
 import User from './models/user';
 
@@ -18,7 +18,7 @@ router.post('/api/v1/user', createUser);
 router.post('/api/v1/auth/login', loginUser);
 
 router.use(async function authenticate(req: express.Request, res: express.Response, next: express.NextFunction) {
-    const user = await User.findOne({email: req.body.email, password: req.body.password });
+    const user = await User.findOne({email: req.headers.email, password: req.headers.password });
     if (user) {
         res.locals.loggedInUser = user;
         next();
@@ -46,6 +46,7 @@ router.post('/api/v1/drug', createDrug);
 
 router.delete('/api/v1/drug/:id', deleteDrug);
 
+router.delete('/api/v1/drugs', deleteAllDrugs);
 
 // users
 

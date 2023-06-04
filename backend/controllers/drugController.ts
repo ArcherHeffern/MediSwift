@@ -54,3 +54,13 @@ export const deleteDrug = async (req: Request, res: Response) => {
         return res.status(500).json({ msg: 'Internal server error.' });
     }
 }
+
+export const deleteAllDrugs = async (req: Request, res: Response) => {
+    try {
+        await Drug.deleteMany({});
+        return res.status(200).json({ msg: 'All drugs deleted.' });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ msg: 'Internal server error.' });
+    }
+}
