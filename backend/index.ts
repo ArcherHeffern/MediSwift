@@ -13,6 +13,9 @@ if (!process.env.DB_USERNAME || !process.env.DB_PASSWORD) {
 
 mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@mediswift.flih4gw.mongodb.net/`);
 
+
+
+
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(routes);

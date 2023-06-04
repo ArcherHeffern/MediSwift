@@ -22,10 +22,10 @@ export const getAllUsers = async (req: Request, res: Response) => {
 
 
 export const createUser = async (req: Request, res: Response) => {
-    const { email, password } = req.body;
+    const { email, password, isSeller=false } = req.body;
 
     try {
-        const user = await User.create({ email, password });
+        const user = await User.create({ email, password, isSeller });
 
         res.status(201).json({
             status: 'success',
