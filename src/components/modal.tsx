@@ -1,5 +1,5 @@
 import './modal.css';
-import { Product } from './types.ts';
+import { Product } from '../types.ts';
 
 interface Props {
     product_name: string;

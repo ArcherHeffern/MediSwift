@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import './App.css'
 import Card from './card.tsx'
-import DBdata from './tempDB.ts';
+import DBdata from '../tempDB.ts';
 import Modal from './modal.tsx';
-import { Product } from './types.ts';
+import { Product } from '../types.ts';
 
 function App() {
   const [isSeller, setIsSeller] = useState(false);
