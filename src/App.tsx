@@ -3,17 +3,11 @@ import './App.css'
 import Card from './card.tsx'
 import DBdata from './tempDB.ts';
 import Modal from './modal.tsx';
-
-type Product = {
-  name: string;
-  description: string;
-  quantity: number;
-  price: number;
-};
+import { Product } from './types.ts';
 
 function App() {
   const [isSeller, setIsSeller] = useState(false);
-  const [modalData, setModalData] = useState<Product|object>({});
+  const [modalData, setModalData] = useState<string>('');
   const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState<Product[]>([]);
 
@@ -23,11 +17,24 @@ function App() {
 
   const openModal = (name: string) => {
     setIsOpen(true);
-    data.filter((item) => item.name === name).map((item) => setModalData(item))
+    setModalData(name);
   }
-  
+
+  const setQuantity = (name: string, newQuantity: number) => {
+    // TODO: Update db
+    setData(data.map((item) => {
+      if (item.name === name) {
+        return {
+          ...item,
+          quantity: newQuantity
+        }
+      }
+      return item
+    }))
+  }
+
   useEffect(() => {
-    // get data from db
+    // TODO: get data from db
     setData(DBdata)
   }, [])
 
@@ -42,11 +49,11 @@ function App() {
     <div className='card-container'>
     { 
     data.map((item) => {
-      return <Card key={item.name} {...item} openModal={openModal} isSeller={isSeller}/>
+      return <Card key={item.name} data={data} product_name={item.name} openModal={openModal} isSeller={isSeller} setQuantity={setQuantity}/>
     })
   } 
     </div>
-    <Modal {...{modalData, isOpen, onClose}}/>
+    <Modal {...{isOpen, onClose, data, setData}} product_name={modalData} setQuantity={setQuantity}/>
     </>
   )
 }
