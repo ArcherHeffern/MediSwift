@@ -15,7 +15,7 @@ router.get('/api/v1/drugs', getDrugs);
 
 router.post('/api/v1/drug', createDrug);
 
-router.put('/api/v1/drug/:id', updateDrug);
+router.put('/api/v1/drug/:id', incrementDrug);
 
 router.post('/api/v1/checkout', checkout);
 
