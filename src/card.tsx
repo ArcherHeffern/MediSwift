@@ -5,11 +5,13 @@ interface Props {
     name: string;
     quantity: number;
     price: number;
+    openModal: () => void;
     isSeller: boolean;
 }
 
 function Card(props: Props) {
-    const { name, quantity, price, isSeller } = props;
+    const { name, quantity, price, openModal, isSeller } = props;
+    const url = `./images/${name.toLowerCase()}.jpg`;
     const [currentQuantity, setCurrentQuantity] = useState(quantity);
     function incrementQuantity() {
         setCurrentQuantity(currentQuantity + 1);
@@ -20,10 +22,10 @@ function Card(props: Props) {
         setCurrentQuantity(currentQuantity - 1);
     }
     return (
-        <div className="card-grid">
-            <div className="card-wrapper">
+            <div className="card-wrapper" onClick={openModal}>
                 <h3 className="card-name">{name || "drug"}</h3>
                 <div className="card-image">
+                    <img src={url} alt={name.toLowerCase()} />
                 </div>
                 <div className="card-detail" >
                     <p>Price: {price}</p>
@@ -32,9 +34,6 @@ function Card(props: Props) {
                     {isSeller && <button onClick={decrementQuantity}>Remove</button>}
                 </div>
             </div>
-        </div>
-
-
     );
 
 }
