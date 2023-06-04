@@ -1,7 +1,7 @@
 import Drug from '../models/drug';
 import { Request, Response } from 'express';
 
-export const getDrugs = async (req, res) => {
+export const getDrugs = async (req: Request, res: Response) => {
     try {
         const drugs = await Drug.find({});
         res.json(drugs);
@@ -10,14 +10,16 @@ export const getDrugs = async (req, res) => {
     }
 };
 
- export const createDrug = async (req, res) => {
+ export const createDrug = async (req: Request, res: Response) => {
     try {
         const drug = new Drug(req.body);
         await drug.save();
         res.status(201).json(drug);
     } catch (error) {
         console.log(error);
-        res.status(409).json({message: error.message});
+        if (typeof error === 'object') {
+            res.status(409);
+        }
     }
 };
 
