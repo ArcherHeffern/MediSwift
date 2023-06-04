@@ -21,3 +21,12 @@ header > h1 {
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
+.login-button {
+    background-color: #61dafb;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 1em;
+    cursor: pointer;
+}

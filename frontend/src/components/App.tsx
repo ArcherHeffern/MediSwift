@@ -93,7 +93,7 @@ function App() {
     <>
       <header>
         <h1>Logo</h1>
-        {email && password ? <p>{email}</p> : <button onClick={openLoginModal}>Login</button>}
+        {email && password ? <p>{email}</p> : <button onClick={openLoginModal} className='login-button'>Login</button>}
       </header>
       <div className='card-container'>
         {
