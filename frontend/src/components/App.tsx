@@ -36,7 +36,7 @@ function App() {
 
   const successfulLogin = async (email: string, password: string) => {
     const res = await Axios.post('http://localhost:3001/api/v1/auth/login', {
-      headers : {
+      headers: {
         'email': email,
         'password': password
       }
@@ -103,7 +103,7 @@ function App() {
         }
       </div>
       <Modal {...{ isOpen, onClose, data, setData }} product_name={modalData} setQuantity={setQuantity} />
-      <LoginModal {...{isLoginOpen, onLoginClose, successfulLogin}} />
+      <LoginModal {...{ isLoginOpen, onLoginClose, successfulLogin }} />
       <button onClick={addDummyData}>Add dummy data</button>
     </>
   )
