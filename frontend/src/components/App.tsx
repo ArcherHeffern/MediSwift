@@ -93,6 +93,7 @@ function App() {
     <>
       <header>
         <h1>Logo</h1>
+        {email && password ? <p>{email}</p> : <button onClick={openLoginModal}>Login</button>}
       </header>
       <div className='card-container'>
         {
@@ -102,20 +103,8 @@ function App() {
         }
       </div>
       <Modal {...{ isOpen, onClose, data, setData }} product_name={modalData} setQuantity={setQuantity} />
+      <LoginModal {...{isLoginOpen, onLoginClose, successfulLogin}} />
       <button onClick={addDummyData}>Add dummy data</button>
-    <header>
-      <h1>Logo</h1>
-      {email && password ? <p>{email}</p> : <button onClick={openLoginModal}>Login</button>}
-    </header>
-    <div className='card-container'>
-    { 
-    data.map((item) => {
-      return <Card key={item.name} data={data} product_name={item.name} openModal={openModal} isSeller={isSeller} setQuantity={setQuantity}/>
-    })
-  } 
-    </div>
-    <Modal {...{isOpen, onClose, data, setData}} product_name={modalData} setQuantity={setQuantity}/>
-    <LoginModal {...{isLoginOpen, onLoginClose, successfulLogin}} />
     </>
   )
 }

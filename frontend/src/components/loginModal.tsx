@@ -1,5 +1,5 @@
 import './modal.css';
-import React, { SetStateAction } from 'react';
+import React from 'react';
 import { Formik } from 'formik';
 
 
@@ -39,10 +39,9 @@ function LoginModal({ isLoginOpen, onLoginClose, successfulLogin}: Props) {
                 }
                 if (!values.password) {
                     errors.password = 'Required';
-                } else if (values.password.length < 5) {
-                    errors.password = 'Password must be at least 8 characters';
                 }
-                return errors;
+               return errors;
+
             }}
 
        onSubmit={(values, { setSubmitting }) => {
