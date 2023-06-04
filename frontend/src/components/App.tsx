@@ -6,6 +6,7 @@ import Modal from './modal.tsx';
 import LoginModal from './loginModal.tsx';
 import { Product, User } from '../types.ts';
 import Axios from 'axios';
+import MediLogin from "../static/medilogin.svg"
 
 
 function App() {
@@ -93,7 +94,7 @@ function App() {
     <>
       <header>
         <h1>Logo</h1>
-        {email && password ? <p>{email}</p> : <button onClick={openLoginModal} className='login-button'>Login</button>}
+        {email && password ? <p>{email}</p> : <button onClick={openLoginModal} className='login-button'><img src={MediLogin} alt="Login"/></button>}
       </header>
       <div className='card-container'>
         {
