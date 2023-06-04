@@ -41,13 +41,13 @@ export const updateDrug = async (req: Request, res: Response) => {
 }
 
 export const deleteDrug = async (req: Request, res: Response) => {
-    const drug = await Drug.findOne({ where: { id: req.params.id } });
+    const drug = await Drug.findById(req.params.id);
     if (!drug) {
         return res.status(404).json({ msg: 'Drug not found.' });
     }
 
     try {
-        await drug.destroy();
+        await Drug.deleteOne(drug);
         return res.status(200).json({ msg: 'Drug deleted.' });
     } catch (error) {
         console.log(error);
