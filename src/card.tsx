@@ -13,11 +13,13 @@ function Card(props: Props) {
     const { name, quantity, price, openModal, isSeller } = props;
     const url = `./images/${name.toLowerCase()}.jpg`;
     const [currentQuantity, setCurrentQuantity] = useState(quantity);
-    function incrementQuantity() {
+    function incrementQuantity(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+        e.stopPropagation();
         setCurrentQuantity(currentQuantity + 1);
     }
 
-    function decrementQuantity() {
+    function decrementQuantity(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+        e.stopPropagation(); 
         if (currentQuantity === 0) return;
         setCurrentQuantity(currentQuantity - 1);
     }
