@@ -6,6 +6,10 @@ const app = express();
 dotenv.config();
 
 console.log(process.env.DB_USERNAME, process.env.DB_PASSWORD)
+if (!process.env.DB_USERNAME || !process.env.DB_PASSWORD) {
+    console.error('Please set DB_USERNAME and DB_PASSWORD in .env file');
+    process.exit(1);
+}
 
 mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@mediswift.flih4gw.mongodb.net/`);
 
