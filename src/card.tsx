@@ -5,8 +5,8 @@ interface Props {
     name: string;
     quantity: number;
     price: number;
-    openModal: () => void;
     isSeller: boolean;
+    openModal: (arg0: string) => void;
 }
 
 function Card(props: Props) {
@@ -22,7 +22,7 @@ function Card(props: Props) {
         setCurrentQuantity(currentQuantity - 1);
     }
     return (
-            <div className="card-wrapper" onClick={openModal}>
+            <div className="card-wrapper" onClick={() => openModal(name)}>
                 <h3 className="card-name">{name || "drug"}</h3>
                 <div className="card-image">
                     <img src={url} alt={name.toLowerCase()} />

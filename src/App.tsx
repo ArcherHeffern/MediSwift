@@ -1,22 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css'
 import Card from './card.tsx'
-import data from './tempDB.ts';
+import DBdata from './tempDB.ts';
 import Modal from './modal.tsx';
+
+type Product = {
+  name: string;
+  description: string;
+  quantity: number;
+  price: number;
+};
 
 function App() {
   const [isSeller, setIsSeller] = useState(false);
-  const [modalData, setModalData] = useState({key: 'value'});
+  const [modalData, setModalData] = useState<Product|object>({});
   const [isOpen, setIsOpen] = useState(false);
+  const [data, setData] = useState<Product[]>([]);
 
   const onClose = () => {
     setIsOpen(false);
   }
 
-  const openModal = () => {
+  const openModal = (name: string) => {
     setIsOpen(true);
-    // TODO: data stuff
+    data.filter((item) => item.name === name).map((item) => setModalData(item))
   }
+  
+  useEffect(() => {
+    // get data from db
+    setData(DBdata)
+  }, [])
 
   return (
     <>
