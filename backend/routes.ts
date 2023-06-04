@@ -1,5 +1,5 @@
 import express from 'express';
-import { createUser, loginUser } from './controllers/userController';
+import { getAllUsers, createUser, loginUser } from './controllers/userController';
 import { getDrugs, createDrug, updateDrug } from './controllers/drugController';
 import { checkout } from './controllers/checkoutController';
 
@@ -20,6 +20,8 @@ router.put('/api/v1/drug/:id', updateDrug);
 router.post('/api/v1/checkout', checkout);
 
 // users
+
+router.get('/api/v1/users', getAllUsers);
 
 router.post('/api/v1/user', createUser);
 
