@@ -5,10 +5,18 @@ const drugSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    price: Number,
+    price: 
+        {
+            type: Number,
+            required: true,
+        }, 
     description: String,
-    image: String,
-    quantity: Number,
+    quantity: 
+        { 
+            type: Number,
+            required: true,
+        },
+
 });
 
 export default mongoose.models.Drug || mongoose.model('Drug', drugSchema);
