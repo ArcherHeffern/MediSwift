@@ -1,4 +1,4 @@
-import mongoose, { Model } from 'mongoose';
+import mongoose from 'mongoose';
 const drugSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -11,5 +11,4 @@ const drugSchema = new mongoose.Schema({
     quantity: Number,
 });
 
-const Drug: Model<any> = mongoose.model('Drug', drugSchema);
-export default Drug;
+export default mongoose.models.Drug || mongoose.model('Drug', drugSchema);
