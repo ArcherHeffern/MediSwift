@@ -12,7 +12,7 @@ export const getDrugs = async (req: Request, res: Response) => {
 
  export const createDrug = async (req: Request, res: Response) => {
     try {
-        const drug = new Drug(req.body);
+        const drug = new Drug(req.body.data);
         await drug.save();
         res.status(201).json(drug);
     } catch (error) {

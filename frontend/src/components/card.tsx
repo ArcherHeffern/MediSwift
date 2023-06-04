@@ -1,15 +1,15 @@
 import "./card.css";
-import { Product } from "../types";
+import { Product, User } from "../types";
 
 interface Props {
     product_name: string;
     data: Product[];
-    isSeller: boolean;
+    user: User | null;
     openModal: (arg0: string) => void;
     setQuantity: (name: string, newQuantity: number) => void;
 }
 
-function Card({ product_name, data, openModal, isSeller, setQuantity }: Props) {
+function Card({ product_name, data, openModal, user, setQuantity }: Props) {
     const product = data.filter((item) => item.name === product_name)[0];
     const url = `./images/${product.name.toLowerCase()}.jpg`;
 
@@ -31,9 +31,9 @@ function Card({ product_name, data, openModal, isSeller, setQuantity }: Props) {
                 </div>
                 <div className="card-detail" >
                     <p>Price: {product.price}</p>
-                    {isSeller && <button onClick={incrementQuantity}>Add</button>}
+                    {user?.isSeller && <button onClick={incrementQuantity}>Add</button>}
                     <p>Quantity: {product.quantity}</p>
-                    {isSeller && <button onClick={decrementQuantity}>Remove</button>}
+                    {user?.isSeller && <button onClick={decrementQuantity}>Remove</button>}
                 </div>
             </div>
     );

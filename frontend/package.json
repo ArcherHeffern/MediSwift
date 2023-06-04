@@ -10,6 +10,9 @@
     "bb": "tsc && node dist/index.js"
   },
   "dependencies": {
+    "@types/axios": "^0.14.0",
+    "axios": "^1.4.0",
+    "axis": "^1.0.0",
     "formik": "^2.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

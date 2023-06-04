@@ -17,6 +17,8 @@ router.post('/api/v1/user', createUser);
 
 router.post('/api/v1/auth/login', loginUser);
 
+router.get('/api/v1/drugs', getDrugs);
+
 router.use(async function authenticate(req: express.Request, res: express.Response, next: express.NextFunction) {
     const user = await User.findOne({email: req.headers.email, password: req.headers.password });
     if (user) {
@@ -29,7 +31,6 @@ router.use(async function authenticate(req: express.Request, res: express.Respon
 
 router.post('/api/v1/checkout', checkout);
 
-router.get('/api/v1/drugs', getDrugs);
 
 // authenticate seller
 router.use(async function authenticateSeller(req: express.Request, res: express.Response, next: express.NextFunction) {
