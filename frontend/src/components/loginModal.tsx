@@ -55,6 +55,7 @@ function LoginModal({ isLoginOpen, onLoginClose, login, signUp}: Props) {
                     <input type="submit" value="Login" />
                   </form> : <form onSubmit={(e) => {
                     e.preventDefault();
+                    console.log(`Signing up ${email} ${password}`)
                     signUp(email, password);
                     setEmail('');
                     setPassword('');
