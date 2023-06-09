@@ -38,8 +38,8 @@ function LoginModal({ isLoginOpen, onLoginClose, login, signUp}: Props) {
         <div className="modal-overlay" onClick={onLoginClose}>
             <div className="modal-content" onClick={preventClose}>
                 <div className="modal-header">
-                  <button onClick={showLogin}>Login</button>
-                  <button onClick={showSignUp}>Sign Up</button>
+                  <button onClick={showLogin} style={!loginClicked ? {backgroundColor : "grey"} : {backgroundColor : "blue"}}>Login</button>
+                  <button onClick={showSignUp} style={loginClicked ? {backgroundColor : "grey"} : {backgroundColor : "blue"}}>Sign Up</button>
                 </div>
                 <div>
                   {loginClicked ? <form onSubmit={(e) => {
