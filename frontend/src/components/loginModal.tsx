@@ -7,8 +7,10 @@ interface Props {
     isLoginOpen: boolean;
     onLoginClose: () => void;
     login: (email: string, password: string) => void;
+    signUp: (email: string, password: string) => void;
 
 }
+
 
 
 
@@ -16,10 +18,19 @@ function preventClose(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     e.stopPropagation();
 }
 
-function LoginModal({ isLoginOpen, onLoginClose, login}: Props) {
+function LoginModal({ isLoginOpen, onLoginClose, login, signUp}: Props) {
 
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const [loginClicked, setLoginClicked] = useState<boolean>(false);
+    // const [signUpClicked, setSignUpClicked] = useState<boolean>(false);
+
+    function showLogin() {
+      setLoginClicked(true);
+    }
+    function showSignUp() {
+      setLoginClicked(false);
+    }
 
     if (!isLoginOpen) return null;
 
@@ -27,11 +38,11 @@ function LoginModal({ isLoginOpen, onLoginClose, login}: Props) {
         <div className="modal-overlay" onClick={onLoginClose}>
             <div className="modal-content" onClick={preventClose}>
                 <div className="modal-header">
-                  <button>Login</button>
-                  <button>Sign Up</button>
+                  <button onClick={showLogin}>Login</button>
+                  <button onClick={showSignUp}>Sign Up</button>
                 </div>
                 <div>
-                  <form onSubmit={(e) => {
+                  {loginClicked ? <form onSubmit={(e) => {
                     e.preventDefault();
                     login(email, password);
                     setEmail('');
@@ -40,8 +51,20 @@ function LoginModal({ isLoginOpen, onLoginClose, login}: Props) {
                     <input type="text" name="email" id="email-form" onChange={(e)=> setEmail(e.target.value)} value={email}/>
                     <br/>
                     <input type="password" name="password" id="password-form" onChange={e => setPassword(e.target.value)} value={password}/>
-                    <input type="submit" value="submit" />
-                  </form>
+                    <br/>
+                    <input type="submit" value="Login" />
+                  </form> : <form onSubmit={(e) => {
+                    e.preventDefault();
+                    signUp(email, password);
+                    setEmail('');
+                    setPassword('');
+                    }}>
+                    <input type="text" name="email" id="email-form" onChange={(e)=> setEmail(e.target.value)} value={email}/>
+                    <br/>
+                    <input type="password" name="password" id="password-form" onChange={e => setPassword(e.target.value)} value={password}/>
+                    <br/>
+                    <input type="submit" value="Sign Up" />
+                  </form>}
                 </div>
             </div>
         </div>

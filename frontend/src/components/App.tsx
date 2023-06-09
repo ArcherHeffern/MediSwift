@@ -49,6 +49,22 @@ function App() {
     }
   }
 
+  const signUp = async (email: string, password: string) => {
+    try {
+    const res = await Axios.post('http://localhost:3000/api/v1/auth/signup', null, {
+      headers: {
+        'email': email,
+        'password': password
+      }
+    })
+    setUser(res.data.data.user);
+    console.log("Signed up " + JSON.stringify(user))
+    } catch (e) {
+      alert('Could not create a user\n' + e);
+    }
+  }
+
+
   const setQuantity = async (id: string, quantity: number) => {
     await Axios.put(`http://localhost:3000/drug/${id}`, { quantity: quantity }, {
       headers: {
@@ -101,7 +117,7 @@ function App() {
         }
       </div>
       <Modal {...{ isOpen, onClose, data, setData }} product_name={modalData} setQuantity={setQuantity} />
-      <LoginModal {...{ isLoginOpen, onLoginClose, login}} />
+      <LoginModal {...{ isLoginOpen, onLoginClose, login, signUp}} />
       <button onClick={addDummyData}>Add dummy data</button>
     </>
   )

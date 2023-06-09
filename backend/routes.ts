@@ -17,6 +17,8 @@ router.post('/api/v1/user', createUser);
 
 router.post('/api/v1/auth/login', loginUser);
 
+router.post('/api/v1/auth/signup', createUser)
+
 router.get('/api/v1/drugs', getDrugs);
 
 router.use(async function authenticate(req: express.Request, res: express.Response, next: express.NextFunction) {
