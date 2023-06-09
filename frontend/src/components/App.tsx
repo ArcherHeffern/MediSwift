@@ -91,7 +91,7 @@ function App() {
     <>
       <header>
         <div className='logo-container'><img src={logo} alt='logo'/></div>
-        {user?.email && user?.password ? <><p>{user?.email}</p><button></button></> : <button onClick={openLoginModal} className='login-button'><img src={MediLogin} alt="Login"/></button>}
+        {user?.email && user?.password ? <><p>{user?.email}</p><button onClick={() => setUser(null)}>Log out</button></> : <button onClick={openLoginModal} className='login-button'><img src={MediLogin} alt="Login"/></button>}
       </header>
       <div className='card-container'>
         {
