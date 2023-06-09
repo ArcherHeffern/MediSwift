@@ -13,8 +13,6 @@ router.get('/', (_, res) => {
 // drugs
 router.get('/api/v1/users', getAllUsers);
 
-router.post('/api/v1/user', createUser);
-
 router.post('/api/v1/auth/login', loginUser);
 
 router.post('/api/v1/auth/signup', createUser)
