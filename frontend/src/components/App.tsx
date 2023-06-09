@@ -14,8 +14,6 @@ function App() {
   const [modalData, setModalData] = useState<string>('');
   const [isOpen, setIsOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
   const [data, setData] = useState<Product[]>([]);
   const [user, setUser] = useState<User | null>(null);
 
@@ -36,21 +34,19 @@ function App() {
     setIsLoginOpen(true);
   }
 
-  const successfulLogin = async (email: string, password: string) => {
-    const res = await Axios.post('http://localhost:3001/api/v1/auth/login', {
+  const login = async (email: string, password: string) => {
+    try {
+    const res = await Axios.post('http://localhost:3000/api/v1/auth/login', null, {
       headers: {
         'email': email,
         'password': password
       }
     })
-    if (res.status === 200) {
-      setEmail(email);
-      setPassword(password);
-      setIsOpen(false);
-    } else {
-      alert('Wrong email or password');
+    setUser(res.data.data.user);
+    console.log("Logged in " + JSON.stringify(user))
+    } catch (e) {
+      alert('Wrong email or password\n' + e);
     }
-
   }
 
   const setQuantity = async (id: string, quantity: number) => {
@@ -95,7 +91,7 @@ function App() {
     <>
       <header>
         <div className='logo-container'><img src={logo} alt='logo'/></div>
-        {email && password ? <p>{email}</p> : <button onClick={openLoginModal} className='login-button'><img src={MediLogin} alt="Login"/></button>}
+        {user?.email && user?.password ? <><p>{user?.email}</p><button></button></> : <button onClick={openLoginModal} className='login-button'><img src={MediLogin} alt="Login"/></button>}
       </header>
       <div className='card-container'>
         {
@@ -105,7 +101,7 @@ function App() {
         }
       </div>
       <Modal {...{ isOpen, onClose, data, setData }} product_name={modalData} setQuantity={setQuantity} />
-      <LoginModal {...{ isLoginOpen, onLoginClose, successfulLogin }} />
+      <LoginModal {...{ isLoginOpen, onLoginClose, login}} />
       <button onClick={addDummyData}>Add dummy data</button>
     </>
   )

@@ -1,0 +1,8 @@
+.modal-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.modal-header > button {
+    flex-grow: 1;
+}
