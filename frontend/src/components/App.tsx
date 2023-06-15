@@ -8,7 +8,7 @@ import { Product, User } from '../types.ts';
 import Axios from 'axios';
 import MediLogin from "../assets/medilogin.svg"
 import logo from "../assets/logo.png"
-
+import cart from '../assets/cart.png'
 
 function App() {
   const [modalData, setModalData] = useState<string>('');
@@ -104,7 +104,11 @@ function App() {
     <>
       <header>
         <div className='logo-container'><img src={logo} alt='logo'/></div>
+        <div className='right-header'>
+
+        <img src={cart} alt="shopping cart" className='cart'/>
         {user?.email && user?.password ? <><p>{user?.email}</p><button onClick={() => setUser(null)}>Log out</button></> : <button onClick={openLoginModal} className='login-button'><img src={MediLogin} alt="Login"/></button>}
+        </div>
       </header>
       <div className='card-container'>
         {

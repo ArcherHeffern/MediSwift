@@ -41,6 +41,17 @@ header {
 .login-button img {
     height: 1em;
     width: 1em;
-    
-    
+}
+
+.right-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cart {
+    height: 50px;
+    width: 50px;
+    background: inherit;
+    /* background-color: inherit; */
 }
