@@ -64,7 +64,7 @@ function LoginModal({ isLoginOpen, onLoginClose, login, signUp}: Props) {
                     <br/>
                     <input type="password" name="password" id="password-form" onChange={e => setPassword(e.target.value)} value={password}/>
                     <br/>
-                    <input type="submit" value="Sign Up" />
+                    <input type="submit" value="Create Account" />
                   </form>}
                 </div>
             </div>
