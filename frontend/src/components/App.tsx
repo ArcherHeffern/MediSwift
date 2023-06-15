@@ -28,6 +28,9 @@ function App() {
   const onLoginClose = () => {
     setIsLoginOpen(false);
   }
+  const onCartClose = () => {
+    setCartOpen(false);
+  }
 
   const openModal = (name: string) => {
     setIsOpen(true);
@@ -125,7 +128,7 @@ function App() {
       </div>
       <Modal {...{ isOpen, onClose, data, setData }} product_name={modalData} setQuantity={setQuantity} />
       <LoginModal {...{ isLoginOpen, onLoginClose, login, signUp}} />
-      <SideBar {...{ cartOpen, setCartOpen }} />
+      <SideBar {...{ cartOpen, setCartOpen, onCartClose }} />
 
       <button onClick={addDummyData}>Add dummy data</button>
     </>
