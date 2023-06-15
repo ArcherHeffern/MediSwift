@@ -6,14 +6,17 @@ import Modal from './modal.tsx';
 import LoginModal from './loginModal.tsx';
 import { Product, User } from '../types.ts';
 import Axios from 'axios';
-import MediLogin from "../assets/medilogin.svg"
-import logo from "../assets/logo.png"
-import cart from '../assets/cart.png'
+import MediLogin from "../assets/medilogin.svg";
+import logo from "../assets/logo.png";
+import cart from '../assets/cart.png';
+import SideBar from './SideBar.tsx';
+
 
 function App() {
   const [modalData, setModalData] = useState<string>('');
   const [isOpen, setIsOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
   const [data, setData] = useState<Product[]>([]);
   const [user, setUser] = useState<User | null>(null);
 
@@ -32,6 +35,9 @@ function App() {
   }
   const openLoginModal = () => {
     setIsLoginOpen(true);
+  }
+  const showShoppingCart = () => {
+    setCartOpen(true);
   }
 
   const login = async (email: string, password: string) => {
@@ -106,7 +112,7 @@ function App() {
         <div className='logo-container'><img src={logo} alt='logo'/></div>
         <div className='right-header'>
 
-        <img src={cart} alt="shopping cart" className='cart'/>
+        <div className='shopping-cart' onClick={showShoppingCart}><img src={cart} alt="shopping cart" className='cart'/></div>
         {user?.email && user?.password ? <><p>{user?.email}</p><button onClick={() => setUser(null)}>Log out</button></> : <button onClick={openLoginModal} className='login-button'><img src={MediLogin} alt="Login"/></button>}
         </div>
       </header>
@@ -119,6 +125,8 @@ function App() {
       </div>
       <Modal {...{ isOpen, onClose, data, setData }} product_name={modalData} setQuantity={setQuantity} />
       <LoginModal {...{ isLoginOpen, onLoginClose, login, signUp}} />
+      <SideBar {...{ cartOpen, setCartOpen }} />
+
       <button onClick={addDummyData}>Add dummy data</button>
     </>
   )

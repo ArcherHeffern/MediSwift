@@ -1,0 +1,11 @@
+.sidebar-card {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    border-radius: 5px;
+    height: 100vh;
+    border: 1px solid #000;
+    width: 300px;
+    z-index: 1;
+}

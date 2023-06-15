@@ -12,8 +12,6 @@ interface Props {
 }
 
 
-
-
 function preventClose(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     e.stopPropagation();
 }
