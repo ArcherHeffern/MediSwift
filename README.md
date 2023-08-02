@@ -1,3 +1,6 @@
+<p align="center">
+ <img src="logo/logo.jpg" width="300" />
+</p>
 
 # MediSwift
 
