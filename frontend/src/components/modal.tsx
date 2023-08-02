@@ -28,7 +28,7 @@ function Modal({ product_name, data, isOpen, onClose, setQuantity }: Props) {
                     <p>Description: {product?.description??"dgjdf"}</p>
                     <p>Price: {product?.price??"574"}</p>
                     <p>Quantity: {product?.quantity??"583"}</p>
-                    <button onClick={() => setQuantity(product.name, product.quantity +1)}>Buy</button>
+                    <button onClick={() => setQuantity(product.name, product.quantity +1)}>Add to Cart</button>
                 </div>
             </div>
         </div>
